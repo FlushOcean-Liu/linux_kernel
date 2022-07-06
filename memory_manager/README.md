@@ -19,3 +19,11 @@ struct page{
 
 
 ## 区
+
+
+Linux主要使用四种区
+* ZONE_DMA: 这个区包含的页能用来执行DMA操作；
+* ZONE_DMA32: 类似ZONE_DMA，不同之处只能被32位设备访问；
+* ZONE_NORMAL: 这个区包含都是能正常映射的页；
+* ZONE_HIGHEM: 这个区包含“高端内存”，其中的页并不能永久映射到内核地址空间。
+ 
