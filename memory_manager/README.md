@@ -49,4 +49,4 @@ slab对上提供kmalloc，kfree接口；
 
 buddy对上（slab）提供alloc_page,free_pages接口，对下管理物理内存；
 
-
+(./img/slab.jpg)
