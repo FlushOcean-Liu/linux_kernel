@@ -42,3 +42,11 @@ struct slap{
 };
 
 ```
+
+### slab和buddy的关系
+
+slab对上提供kmalloc，kfree接口；
+
+buddy对上（slab）提供alloc_page,free_pages接口，对下管理物理内存；
+
+
