@@ -31,3 +31,14 @@ Linux主要使用四种区
 slab三种状态：
 满、部分满、空；  
 内核需要新对象，先从部分满的slap中进行分配，如果没有部分满的，就从空的slap中分配，空的也没有就要新创建一个slap；
+
+```c
+struct slap{
+    struct list_head list;    /* 满、部分满或空链表 */
+    unsigned long colouroff;  /* slab着色的偏移量 */
+    void          *s_mem;     /* 在slab中的第一个对象 */
+    unsigned int  inuse;      /* slab中已分配的对象数 */
+    kmem_bufctl_t free;       /* 第一个空闲对象（如果有的话）*/
+};
+
+```
