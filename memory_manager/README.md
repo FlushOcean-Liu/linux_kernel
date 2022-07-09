@@ -32,8 +32,11 @@ slab三种状态：
 满、部分满、空；  
 内核需要新对象，先从部分满的slap中进行分配，如果没有部分满的，就从空的slap中分配，空的也没有就要新创建一个slap；
 
+
+
+
 ```c
-struct slap{
+struct slab{
     struct list_head list;    /* 满、部分满或空链表 */
     unsigned long colouroff;  /* slab着色的偏移量 */
     void          *s_mem;     /* 在slab中的第一个对象 */
@@ -43,6 +46,11 @@ struct slap{
 
 ```
 
+
+slab设计的目的：  
+内核页必须经常分配内存，但无法借助标准库函数，按页分配内存，单位太大，不仅浪费空间而且完全不可接受；
+因此引入slab管理机制。
+
 ### slab和buddy的关系
 
 slab对上提供kmalloc，kfree接口；
@@ -50,3 +58,5 @@ slab对上提供kmalloc，kfree接口；
 buddy对上（slab）提供alloc_page,free_pages接口，对下管理物理内存；
 
 ![](./img/slab.jpg)
+
+
