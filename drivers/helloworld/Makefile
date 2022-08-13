@@ -1,7 +1,8 @@
 #KERNELDIR := /home/sixer/imx_kernel/linux-imx-rel_imx_4.1.15_2.1.0_ga
 
 # 内核源码目录，如何需要将该驱动加载系统内核，则需要与系统内核版本一致，要编译好
-KERNELDIR := /data/opensource/linux-5.0.1
+#KERNELDIR := /data/opensource/linux-5.0.1
+KERNELDIR := /usr/src/linux-headers-5.15.0-41-generic  #ubuntu 20 系统内核路径
 CURRENT_PATH := $(shell pwd)
 
 #export ARCH=arm
