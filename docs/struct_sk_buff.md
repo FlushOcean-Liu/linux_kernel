@@ -32,10 +32,10 @@ struct sk_buff
     sk_buff_data_t network_header ;   //网络层头部的偏移量
     sk_buff_data_t mac_header ;       //数据链路层头部的偏移量
     
-    char *data ; //socket buffer中数据的起始位置；
-    sk_buff_data_t tail ; //socket buffer中数据的结束位置；
-    char *head ; //socket buffer缓存区的起始位置；
-    sk_buffer_data_t end ; //socket buffer缓存区的终止位置；
+    char *data ;            //socket buffer中数据的起始位置；
+    sk_buff_data_t tail ;   //socket buffer中数据的结束位置；
+    char *head ;            //socket buffer缓存区的起始位置；
+    sk_buffer_data_t end ;  //socket buffer缓存区的终止位置；
     
     struct net_device *dev; //将要发送struct sk_buff结构体的网络设备或struct sk_buff的接收
                             //网络设备
@@ -44,11 +44,10 @@ struct sk_buff
     
     struct timeval tstamp ; //用于存放接受的数据包的到达时间；
     
-    __u8  local_df : 1 ,  //allow local fragmentaion;
-          cloned   : 1 , // head may be cloned
-          ;
+    __u8  local_df : 1,  //allow local fragmentaion;
+          cloned   : 1,  // head may be cloned;
     
-    __u8  pkt_type : 3 , //数据包的类型；
+    __u8  pkt_type : 3,  //数据包的类型；
           fclone   : 2,  // struct sk_buff clone status
     
 }
