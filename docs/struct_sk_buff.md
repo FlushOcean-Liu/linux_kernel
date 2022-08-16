@@ -53,7 +53,7 @@ struct sk_buff
 }
 
 
-kernel 5.0.1
+kernel 5.10.123
 struct sk_buff {
 	union {
 		struct {
