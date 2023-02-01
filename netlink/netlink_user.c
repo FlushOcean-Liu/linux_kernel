@@ -59,20 +59,20 @@ int main(int argc, char **argv)
     nlh->nlmsg_seq = 0;
     nlh->nlmsg_pid = saddr.nl_pid; //self port
     
-	char input_string[MSG_LEN]={0};
-	while(1){
-		printf("======input msg send to kernel:\n");
-		fgets(input_string, MSG_LEN, stdin);
+    char input_string[MSG_LEN]={0};
+    while(1){
+        printf("======input msg send to kernel:\n");
+	fgets(input_string, MSG_LEN, stdin);
     	int len=strlen(input_string);
     	input_string[len-1]='\0';
     	
-		memcpy(NLMSG_DATA(nlh), input_string, strlen(input_string));
+	memcpy(NLMSG_DATA(nlh), input_string, strlen(input_string));
     	ret = sendto(skfd, nlh, nlh->nlmsg_len, 0, (struct sockaddr *)&daddr, sizeof(struct sockaddr_nl));
     	if(!ret)
     	{
-        	perror("sendto error\n");
-        	close(skfd);
-        	exit(-1);
+            perror("sendto error\n");
+            close(skfd);
+            exit(-1);
     	}
     	printf("[user]send to kernel:%s\n", input_string);
 
@@ -81,13 +81,13 @@ int main(int argc, char **argv)
     	ret = recvfrom(skfd, &u_info, sizeof(user_msg_info), 0, (struct sockaddr *)&daddr, &len);
     	if(!ret)
     	{
-        	perror("recv form kernel error\n");
-        	close(skfd);
-        	exit(-1);
+            perror("recv form kernel error\n");
+            close(skfd);
+            exit(-1);
     	}
 
     	printf("[kernel] from kernel:%s\n\n", u_info.msg);
- 	}
+    }
 
     close(skfd);
 
