@@ -1,4 +1,3 @@
-KERNELDIR := /usr/src/kernels/$(shell uname -r)
 CURRENT_PATH := $(shell pwd)
 
 obj-m := helloworld.o
