@@ -8,32 +8,33 @@
 
 static struct file *fp;
 
+
+/* 读取每一行，一换行符为标志，记录读取位置 */
 static char *read_line(char *buf, int buf_len, struct file *fp)
 {
-	int ret;
-	int i=0;
-	mm_segment_t fs;
+    int ret;
+    int i=0;
+    mm_segment_t fs;
 	
-	fs=get_fs();
-	set_fs(KERNEL_DS);
-	ret = fp->f_op->read(fp, buf, buf_len, &(fp->f_pos));
-	set_fs(fs);
+    fs=get_fs();
+    set_fs(KERNEL_DS);
+    ret = fp->f_op->read(fp, buf, buf_len, &(fp->f_pos));
+    set_fs(fs);
 
-	if(ret<=0)
-		return NULL;
+    if(ret<=0)
+        return NULL;
 
-	while(buf[i++]!='\n' && i< ret);
+    while(buf[i++]!='\n' && i< ret);
 
-	if(i<ret){
-		fp->f_pos +=i-ret;
-	}
+    if(i<ret){// fp->f_pos置为换行符位置
+        fp->f_pos +=i-ret;
+    }
 
-	if(i<buf_len){
-		buf[i-1]=0;
-	}
+    if(i<buf_len){
+        buf[i-1]=0;
+    }
 
-	return buf;
-
+    return buf;
 }
 
 
