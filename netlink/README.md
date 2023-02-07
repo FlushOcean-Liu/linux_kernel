@@ -2,7 +2,7 @@
 主要用于内核态与用户态进行数据通信
 
 ## 2.编译执行
-make
+make  
 insmod netlink_kernel.ko
 
 dmesg查看内核打印信息
