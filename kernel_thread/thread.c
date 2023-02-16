@@ -34,19 +34,19 @@ int thread_task(void *arg)
 
 static int __init init_kernel_thread(void)
 {
-	test_task_struct = kthread_create(thread_task, NULL, "Kernel Thread");
+    test_task_struct = kthread_create(thread_task, NULL, "Kernel Thread");
     if(IS_ERR(test_task_struct)){
-		printk("kthread_create error\n");
-	}else{
-		wake_up_process(test_task_struct);
-	}
-	return 0;
+        printk("kthread_create error\n");
+    }else{
+        wake_up_process(test_task_struct);
+    }
+    return 0;
 }
 
 
 static void __exit exit_kernel_thread(void)
 {
-	kthread_stop(test_task_struct);
+    kthread_stop(test_task_struct);
 }
 
 module_init(init_kernel_thread);
