@@ -9,27 +9,26 @@ static struct stask_struct *test_task_struct;
 
 int thread_task(void *arg)
 {
-	static int count = 0;
+    static int count = 0;
     static int topn_timer = 0;
-	while(1){
-		if(kthread_should_stop()){
-			printk("thread task: kthread_should_stop\n");
-			break;
-		}
-
-		set_current_state(TASK_INTERRUPTIBLE);
-
-		//schedule_timeout(5);
-		ssleep(1);
-
-		if(++topn_timer >=10){
-			printk("thread task: count=%d\n",++count);
-			topn_timer=0;
-        }
-
+    while(1){
+        if(kthread_should_stop()){
+            printk("thread task: kthread_should_stop\n");
+	    break;
 	}
 
-	return 0;
+	et_current_state(TASK_INTERRUPTIBLE);
+
+	//schedule_timeout(5);
+	ssleep(1);
+
+	if(++topn_timer >=10){
+            printk("thread task: count=%d\n",++count);
+            topn_timer=0;
+        }
+    }
+	
+    return 0;
 }
 
 
