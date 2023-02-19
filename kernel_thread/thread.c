@@ -18,7 +18,6 @@ int thread_task(void *arg)
 	}
 
 	et_current_state(TASK_INTERRUPTIBLE);
-
 	//schedule_timeout(5);
 	ssleep(1);
 
