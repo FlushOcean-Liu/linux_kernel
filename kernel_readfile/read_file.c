@@ -83,9 +83,9 @@ static int __init init()
 #endif
         tmp=read_line(rbuf, 256, fp);
         if(tmp)
-        	printk("%s\n", rbuf);
-		else 
-			break;
+            printk("%s\n", rbuf);
+	else 
+	    break;
     }
     set_fs(old_fs);
     
