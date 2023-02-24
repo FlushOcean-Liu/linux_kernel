@@ -8,7 +8,6 @@
 
 static struct file *fp;
 
-
 /* 读取每一行，一换行符为标志，记录读取位置 */
 static char *read_line(char *buf, int buf_len, struct file *fp)
 {
