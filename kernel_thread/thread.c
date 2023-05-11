@@ -50,15 +50,3 @@ static void __exit exit_kernel_thread(void)
 
 module_init(init_kernel_thread);
 module_exit(exit_kernel_thread);
-
-
-
-
-
-
-
-
-
-
-
-
